@@ -47,7 +47,7 @@ const MessageContent = ({message, setLoading, setUpdate}) => {
             <Link 
             sx={{ cursor: 'pointer' }}
             onClick={() => {
-              handleSend(opt.name)
+              handleSend(opt.name + ',' + opt.kod)
               }}>
                 {opt.name}
             </Link>
