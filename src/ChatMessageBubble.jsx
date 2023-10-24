@@ -11,7 +11,9 @@ const MessageContent = ({message, setLoading, setUpdate}) => {
   const handleSend = (mess) => {
     const newMessage = {
       text: mess,
-      isOutgoing: true,} // Assuming this message is sent by the current user
+      isOutgoing: true,
+      detailed: true,
+    } // Assuming this message is sent by the current user
   
     axios.post('http://127.0.0.1:5000/post-message',
      newMessage)
