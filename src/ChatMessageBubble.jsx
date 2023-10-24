@@ -8,11 +8,13 @@ import axios from 'axios';
 
 const MessageContent = ({message, setLoading, setUpdate}) => {
 
-  const handleSend = (mess) => {
+  const handleSend = (opt) => {
     const newMessage = {
-      text: mess,
+      text: opt.name,
       isOutgoing: true,
       detailed: true,
+      file: opt.file
+
     } // Assuming this message is sent by the current user
   
     axios.post('http://127.0.0.1:5000/post-message',
@@ -47,7 +49,7 @@ const MessageContent = ({message, setLoading, setUpdate}) => {
             <Link 
             sx={{ cursor: 'pointer' }}
             onClick={() => {
-              handleSend(opt.name + ',' + opt.file)
+              handleSend(opt)
               }}>
                 {opt.name}
             </Link>
