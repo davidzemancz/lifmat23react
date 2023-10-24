@@ -29,7 +29,7 @@ useEffect(() => {
         elevation={0}
         sx={{
           boxShadow: '0px',
-          height: '400px',
+          height: '70vh',
           overflowY: 'scroll',
           padding: '16px',
           borderRadius: '8px',

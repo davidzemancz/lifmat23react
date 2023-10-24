@@ -2,6 +2,44 @@ import React from 'react';
 import { Paper, Typography, Box  } from '@mui/material';
 import { Link, Divider } from '@mui/material';
 
+const MessageContent = ({message}) => {
+  if (message.isOutgoing){
+    return(
+      <div>
+        <Typography variant="body1" sx={{ wordBreak: "break-word" }}>{message.text}</Typography>
+      </div>
+    )
+  }
+  else if (message.options){
+    return(
+      <div>
+        <Typography variant="body1" sx={{ wordBreak: "break-word" }}>{message.text}</Typography>
+        <ul>
+          {message.options?.map((opt,id) => (
+            <div key={id}>
+            <Link href={opt.url} sx={{fontSize:12}}>{opt.name}</Link>
+            </div>
+          ))}
+        </ul>
+
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <Typography variant="body1" sx={{ wordBreak: "break-word" }}>{message.text}</Typography>
+        {message.refs ?  <Divider sx={{fontSize:12}}>Zdroje</Divider> : <div></div>}
+        {message.refs?.map((ref, id) => (
+        <div key={id}>
+        <Link href={ref.url} sx={{fontSize:12}}>{ref.url}</Link>
+        <Typography variant="refs" sx={{ wordBreak: "break-word" }}>, {ref.info}</Typography>
+        </div>
+      ))}
+      </div>
+    )
+  }
+}
 const ChatMessageBubble = ({message}) => {
 
     return(
@@ -27,14 +65,7 @@ const ChatMessageBubble = ({message}) => {
         
       }}
     >
-      <Typography variant="body1" sx={{ wordBreak: "break-word" }}>{message.text}</Typography>
-      {message.isOutgoing ? <div></div> : <Divider sx={{fontSize:12}}>Zdroje</Divider>}
-      {message.refs?.map((ref, id) => (
-        <div key={id}>
-        <Link href={ref.url} sx={{fontSize:12}}>{ref.url}</Link>
-        <Typography variant="refs" sx={{ wordBreak: "break-word" }}>, {ref.info}</Typography>
-        </div>
-      ))}
+      <MessageContent message={message}/>
     </Paper>
     </Box>
     )
