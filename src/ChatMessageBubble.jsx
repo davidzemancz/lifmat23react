@@ -8,11 +8,12 @@ import axios from 'axios';
 
 const MessageContent = ({message, setLoading, setUpdate}) => {
 
-  const handleSend = (opt) => {
+  const handleSend = (opt, pastId) => {
     const newMessage = {
       text: opt.name,
       isOutgoing: true,
-      file: opt.file
+      file: opt.file,
+      pastId: pastId,
 
     } // Assuming this message is sent by the current user
   
@@ -48,7 +49,7 @@ const MessageContent = ({message, setLoading, setUpdate}) => {
             <Link 
             sx={{ cursor: 'pointer' }}
             onClick={() => {
-              handleSend(opt)
+              handleSend(opt,message.pastId)
               }}>
                 {opt.name}
             </Link>
