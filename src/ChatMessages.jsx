@@ -2,12 +2,13 @@ import React from 'react';
 import { Paper, Typography  } from '@mui/material';
 import ChatMessageBubble from './ChatMessageBubble';
 import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const ChatMessages = ({update}) => {
+  const scrollRef = useRef(null);
 
   const [messages,setMessages] = useState([{text:"koureni",isOutgoing:false},{text:"curaku",isOutgoing:false}]);
+
   useEffect(() => {
     axios.get('http://127.0.0.1:5000/messages', {})
     .then(res => {
@@ -18,15 +19,21 @@ const ChatMessages = ({update}) => {
         console.log(ex)
     })
 },[update]);
+
+useEffect(() => {
+  scrollRef.current?.scrollIntoView({behavior: 'smooth'});
+},[messages]);
+
     return(
         <Paper
-        elevation={3}
+        elevation={0}
         sx={{
+          boxShadow: '0px',
           height: '400px',
           overflowY: 'scroll',
           padding: '16px',
           borderRadius: '8px',
-          border: '1px solid #ccc',
+          // border: '1px solid #ccc',
         }}
       >
         {messages.map((message, index) => (
@@ -34,6 +41,7 @@ const ChatMessages = ({update}) => {
             <ChatMessageBubble message={message}></ChatMessageBubble>
           </div>
         ))}
+        <div ref={scrollRef}></div>
       </Paper>
     )
 }
