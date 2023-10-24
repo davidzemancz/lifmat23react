@@ -7,7 +7,7 @@ import { useEffect, useState, useRef } from 'react';
 const ChatMessages = ({update, setLoading, setUpdate}) => {
   const scrollRef = useRef(null);
 
-  const [messages,setMessages] = useState([{text:"koureni",isOutgoing:false},{text:"curaku",isOutgoing:false}]);
+  const [messages,setMessages] = useState([]);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:5000/messages', {})
@@ -29,7 +29,7 @@ useEffect(() => {
         elevation={0}
         sx={{
           boxShadow: '0px',
-          height: '70vh',
+          height: '60vh',
           overflowY: 'scroll',
           padding: '16px',
           borderRadius: '8px',
@@ -38,6 +38,25 @@ useEffect(() => {
           // border: '1px solid #ccc',
         }}
       >
+        <div sx={{ marginBottom: '8px', padding: '8px', background: '#f0f0f0', borderRadius: '8px' }}>
+        <Paper
+      elevation={0}
+      
+      sx={{
+        padding: '8px',
+        borderRadius: '12px',
+        minWidth:'20%',
+        maxWidth:'80%', 
+        pl: 2, pr:2,
+        marginLeft: 'inherit',
+        backgroundColor: 'message.in',
+        color: 'inherit',
+        
+      }}
+    >
+      <Typography variant="body1" sx={{ wordBreak: "break-word" }}>Hello there</Typography>
+    </Paper>
+          </div>
         {messages.map((message, index) => (
           <div key={index} sx={{ marginBottom: '8px', padding: '8px', background: '#f0f0f0', borderRadius: '8px' }}>
             <ChatMessageBubble message={message} setLoading={setLoading} setUpdate={setUpdate}></ChatMessageBubble>

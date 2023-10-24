@@ -61,7 +61,7 @@ const ChatWindow = () => {
             sx={{ mb:1,mt:1, backgroundColor:'#F0F5F9', display:'flex', minWidth:'80%', borderRadius:'16px', maxHeight:'10%'}}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="pls help"
+            placeholder="pls help me i'm scared"
             InputLabelProps={{
               shrink: false,
             }}
