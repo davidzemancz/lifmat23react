@@ -30,6 +30,10 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Arial, sans-serif', // Change the default font family if needed
+    refs:{
+      fontSize: 12,
+      color: '#3ba6bc'
+    }
   },
   components: {
     MuiButton: {

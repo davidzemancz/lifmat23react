@@ -33,6 +33,8 @@ useEffect(() => {
           overflowY: 'scroll',
           padding: '16px',
           borderRadius: '8px',
+          display: 'flex',
+          flexDirection: 'column'
           // border: '1px solid #ccc',
         }}
       >
