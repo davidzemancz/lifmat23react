@@ -25,13 +25,15 @@ const ChatWindow = () => {
          newMessage)
         .then(function (response) {
           console.log(response);
+          setUpdate(prev => prev + 1);
         })
         .catch(function (error) {
           console.log(error);
         });
+        setUpdate(prev => prev + 1)
 
         setText('');
-        setUpdate(update+1);
+        
         }
       };
 
