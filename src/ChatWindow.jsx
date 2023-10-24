@@ -49,7 +49,7 @@ const ChatWindow = () => {
   return (
     <Container maxWidth='md' sx={{p:2}} >
       <Paper elevation={0} sx={{border:'2px solid', borderColor:'primary.main', borderRadius:'8px', pt:1}}  >
-      <ChatMessages update={update}></ChatMessages>
+      <ChatMessages update={update} setLoading={setLoading} setUpdate={setUpdate}></ChatMessages>
       {/* <Grid container spacing={2} sx={{ marginTop: '16px' }}> */}
       {loading ? <LinearProgress/>:<div></div>}
       <Box display="flex" justifyContent="center" alignItems="center">

@@ -1,8 +1,33 @@
 import React from 'react';
 import { Paper, Typography, Box  } from '@mui/material';
 import { Link, Divider } from '@mui/material';
+import { useState } from 'react';
+import axios from 'axios';
 
-const MessageContent = ({message}) => {
+
+
+const MessageContent = ({message, setLoading, setUpdate}) => {
+
+  const handleSend = (mess) => {
+    const newMessage = {
+      text: mess,
+      isOutgoing: true,} // Assuming this message is sent by the current user
+  
+    axios.post('http://127.0.0.1:5000/post-message',
+     newMessage)
+    .then(function (response) {
+      console.log(response);
+      setUpdate(prev => prev + 1);
+      setLoading(false);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    setUpdate(prev => prev + 1)
+    setLoading(true);
+    
+    }
+
   if (message.isOutgoing){
     return(
       <div>
@@ -14,13 +39,20 @@ const MessageContent = ({message}) => {
     return(
       <div>
         <Typography variant="body1" sx={{ wordBreak: "break-word" }}>{message.text}</Typography>
-        <ul>
+        <div style={{paddingTop: 10, paddingBottom: 10}}>
           {message.options?.map((opt,id) => (
             <div key={id}>
-            <Link href={opt.url}>{opt.name}</Link>
+            <Link 
+            sx={{ cursor: 'pointer' }}
+            onClick={() => {
+              handleSend(opt.name)
+              }}>
+                {opt.name}
+            </Link>
             </div>
           ))}
-        </ul>
+      </div>
+        
 
       </div>
     )
@@ -40,7 +72,7 @@ const MessageContent = ({message}) => {
     )
   }
 }
-const ChatMessageBubble = ({message}) => {
+const ChatMessageBubble = ({message, setLoading, setUpdate}) => {
 
     return(
       <Box sx={{
@@ -65,7 +97,7 @@ const ChatMessageBubble = ({message}) => {
         
       }}
     >
-      <MessageContent message={message}/>
+      <MessageContent message={message} setLoading={setLoading} setUpdate={setUpdate}/>
     </Paper>
     </Box>
     )

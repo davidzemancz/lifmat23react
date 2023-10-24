@@ -4,7 +4,7 @@ import ChatMessageBubble from './ChatMessageBubble';
 import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 
-const ChatMessages = ({update}) => {
+const ChatMessages = ({update, setLoading, setUpdate}) => {
   const scrollRef = useRef(null);
 
   const [messages,setMessages] = useState([{text:"koureni",isOutgoing:false},{text:"curaku",isOutgoing:false}]);
@@ -40,7 +40,7 @@ useEffect(() => {
       >
         {messages.map((message, index) => (
           <div key={index} sx={{ marginBottom: '8px', padding: '8px', background: '#f0f0f0', borderRadius: '8px' }}>
-            <ChatMessageBubble message={message}></ChatMessageBubble>
+            <ChatMessageBubble message={message} setLoading={setLoading} setUpdate={setUpdate}></ChatMessageBubble>
           </div>
         ))}
         <div ref={scrollRef}></div>
