@@ -17,7 +17,7 @@ const MessageContent = ({message}) => {
         <ul>
           {message.options?.map((opt,id) => (
             <div key={id}>
-            <Link href={opt.url} sx={{fontSize:12}}>{opt.name}</Link>
+            <Link href={opt.url}>{opt.name}</Link>
             </div>
           ))}
         </ul>
