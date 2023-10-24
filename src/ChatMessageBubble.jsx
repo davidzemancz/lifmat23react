@@ -9,7 +9,6 @@ const ChatMessageBubble = ({message}) => {
         display: 'inline-flex',
         // flexDirection: 'column', 
         width:'100%',
-        marginLeft: message.isOutgoing ? 'auto' : 'inherit',
         justifyContent: message.isOutgoing ? 'flex-end' : 'flex-start',
         marginBottom: '10px',
         }}>
@@ -18,9 +17,11 @@ const ChatMessageBubble = ({message}) => {
       
       sx={{
         padding: '8px',
-        borderRadius: '8px',
+        borderRadius: '12px',
         minWidth:'20%',
         maxWidth:'80%', 
+        pl: 2, pr:2,
+        marginLeft: message.isOutgoing ? 2 : 'inherit',
         backgroundColor: message.isOutgoing ? 'message.out' : 'message.in',
         color: message.isOutgoing ? 'white' : 'inherit',
         
