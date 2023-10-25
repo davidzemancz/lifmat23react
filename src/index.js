@@ -47,7 +47,8 @@ const theme = createTheme({
         textTransform: 'none', // Prevent uppercase text in buttons
       },
       contained: {
-        color: 'white', // Set the text color to white for contained buttons
+        color: 'white',
+        // Set the text color to white for contained buttons
       },
     },
     },

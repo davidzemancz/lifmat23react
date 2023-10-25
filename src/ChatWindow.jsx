@@ -52,7 +52,7 @@ const ChatWindow = () => {
       <ChatMessages update={update} setLoading={setLoading} setUpdate={setUpdate}></ChatMessages>
       {/* <Grid container spacing={2} sx={{ marginTop: '16px' }}> */}
       {loading ? <LinearProgress sx={{ position: 'absolute',
-            bottom: "2px",
+            bottom: "0px",
             textAlign: 'center', left: 0, right: 0, height:'10px'}} />:<div></div>}
       <Box display="flex" justifyContent="center" alignItems="center">
           <TextField
