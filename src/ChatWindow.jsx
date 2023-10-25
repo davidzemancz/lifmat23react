@@ -68,7 +68,7 @@ const ChatWindow = () => {
             textAlign: 'center'}}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="pls help me i'm scared"
+            placeholder="Zadejte dotaz na lék, nemoc, symptom..."
             InputLabelProps={{
               shrink: false,
             }}

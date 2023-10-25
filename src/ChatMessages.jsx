@@ -57,7 +57,7 @@ useEffect(() => {
         marginTop: '15px'
       }}
     >
-      <Typography variant="body1" sx={{ wordBreak: "break-word" }}>Hello there</Typography>
+      <Typography variant="body1" sx={{ wordBreak: "break-word" }}>Vítejte v SPC AI WIZARD pro snadné vyhledávání informací o lécích</Typography>
     </Paper>
           </div>
         {messages.map((message, index) => (
