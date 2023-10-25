@@ -12,9 +12,10 @@ import Button from '@mui/material/Button';
 
 
 function App() {
-  const navItems = ['Home', 'About', 'Contact'];
+  const navItems = ['AI help', 'QR kódy'];
   return (
-    <div>
+    <Container sx={{p:0, m:0, overflow: 'hidden',display: "flex",
+    flexDirection: "column",}} maxWidth={false} disableGutters >
     <AppBar component="nav" position="sticky">
     <Toolbar>
       <Typography
@@ -22,7 +23,7 @@ function App() {
         component="div"
         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
       >
-        koureni curaku
+        SPC AI WIZARD
       </Typography>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         {navItems.map((item) => (
@@ -33,13 +34,8 @@ function App() {
       </Box>
     </Toolbar>
   </AppBar>
-    <Container className='App'>
-     
-      <div>
       <ChatWindow/>
-      </div>
       </Container>
-      </div>
   );
 }
 

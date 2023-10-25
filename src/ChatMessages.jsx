@@ -29,14 +29,16 @@ useEffect(() => {
         elevation={0}
         sx={{
           boxShadow: '0px',
-          height: '60vh',
-          overflowY: 'scroll',
+          // height: '90vh',
+          overflowY: 'hidden',
           padding: '16px',
           borderRadius: '8px',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
           // border: '1px solid #ccc',
+          m:0
         }}
+        fullHeight
       >
         <div sx={{ marginBottom: '8px', padding: '8px', background: '#f0f0f0', borderRadius: '8px' }}>
         <Paper
@@ -48,10 +50,11 @@ useEffect(() => {
         minWidth:'20%',
         maxWidth:'80%', 
         pl: 2, pr:2,
-        marginLeft: 'inherit',
+        marginLeft: '9%',
         backgroundColor: 'message.in',
         color: 'inherit',
-        
+        marginBottom: '15px',
+        marginTop: '15px'
       }}
     >
       <Typography variant="body1" sx={{ wordBreak: "break-word" }}>Hello there</Typography>

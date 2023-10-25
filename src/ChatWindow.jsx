@@ -47,18 +47,23 @@ const ChatWindow = () => {
         }};
 
   return (
-    <Container maxWidth='md' sx={{p:2}} >
-      <Paper elevation={0} sx={{border:'2px solid', borderColor:'primary.main', borderRadius:'8px', pt:1}}  >
+    <Box sx={{p:0, m:0, overflowY: 'scroll', width: '100vv', height:'75vh'}} style={{width:'100vv', height:'75vh'}}>
+      {/* <Paper style={{width:'100%'}} elevation={0} sx={{border:'2px solid', borderColor:'primary.main', borderRadius:'8px', pt:1, width:'100%'}} maxWidth={false} > */}
       <ChatMessages update={update} setLoading={setLoading} setUpdate={setUpdate}></ChatMessages>
       {/* <Grid container spacing={2} sx={{ marginTop: '16px' }}> */}
       {loading ? <LinearProgress/>:<div></div>}
       <Box display="flex" justifyContent="center" alignItems="center">
           <TextField
             multiline
+            position='sticky'
             maxRows={3}
             className="custom-hidden-label"
-            color="textfield"
-            sx={{ mb:1,mt:1, backgroundColor:'#F0F5F9', display:'flex', minWidth:'80%', borderRadius:'16px', maxHeight:'10%'}}
+            color="primary"
+            
+            sx={{ mb:1,mt:1, backgroundColor:'#F0F5F9', display:'flex', minWidth:'80%', borderRadius:'16px', maxHeight:'10%', 
+            position: 'fixed',
+            bottom: "5%",
+            textAlign: 'center'}}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="pls help me i'm scared"
@@ -88,8 +93,8 @@ const ChatWindow = () => {
       {/* </Grid> */}
       
       </Box>
-      </Paper>
-    </Container>
+      {/* </Paper> */}
+    </Box>
   );
 };
 

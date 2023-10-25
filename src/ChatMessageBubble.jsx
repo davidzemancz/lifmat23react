@@ -84,7 +84,7 @@ const ChatMessageBubble = ({message, setLoading, setUpdate}) => {
         // flexDirection: 'column', 
         width:'100%',
         justifyContent: message.isOutgoing ? 'flex-end' : 'flex-start',
-        marginBottom: '10px',
+        marginBottom: '15px',
         }}>
         <Paper
       elevation={0}
@@ -95,7 +95,8 @@ const ChatMessageBubble = ({message, setLoading, setUpdate}) => {
         minWidth:'20%',
         maxWidth:'80%', 
         pl: 2, pr:2,
-        marginLeft: message.isOutgoing ? 2 : 'inherit',
+        marginLeft: message.isOutgoing ? 'auto' : '9%',
+        marginRight: message.isOutgoing ? '9%' : 'auto',
         backgroundColor: message.isOutgoing ? 'message.out' : 'message.in',
         color: message.isOutgoing ? 'white' : 'inherit',
         
