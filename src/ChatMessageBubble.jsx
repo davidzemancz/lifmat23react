@@ -13,6 +13,7 @@ const MessageContent = ({message, setLoading, setUpdate}) => {
       text: opt.name,
       isOutgoing: true,
       file: opt.file,
+      code: opt.code,
       pastId: pastId,
 
     } // Assuming this message is sent by the current user
