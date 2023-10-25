@@ -33,6 +33,19 @@ const QRSearch =()=>{
     const [name,setName] = useState('')
     const [qrFile, setQrFile] = useState()
 
+    const handleSend = () => {
+        useEffect(() => {
+            axios.get('http://127.0.0.1:5000/messages', {})
+            .then(res => {
+                setQrFile(res.data.messages)
+                console.log(res.data)
+            })
+            .catch(ex => {
+                console.log(ex)
+            })
+        },[]);
+        }
+
     return(
         <Container maxWidth='md' sx={{p:2}} >
       <Paper elevation={0} sx={{border:'2px solid', borderColor:'primary.main', borderRadius:'16px', backgroundColor:'primary.main', p:1}}  >
@@ -57,7 +70,7 @@ const QRSearch =()=>{
                     variant="contained"
                     color="primary"
                     sx={{ width: '100%', borderRadius: '8px',  }}
-                    // onClick={handleSend}
+                    onClick={handleSend}
                   >
                     <SendRoundedIcon></SendRoundedIcon>
                   </IconButton>
@@ -73,7 +86,7 @@ const QRSearch =()=>{
       </Paper>
 
       {qrFile ? <QRComp/> : <div></div>}
-      
+
     </Container>
     )
 }
