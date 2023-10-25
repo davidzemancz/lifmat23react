@@ -1,61 +1,42 @@
 import React from 'react';
 import { Container, TextField, Button, Grid, LinearProgress } from '@mui/material';
 import ChatMessages from './ChatMessages';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import IconButton from '@mui/material/IconButton';
 import {Paper, Box, Image} from '@mui/material';
 import { InputAdornment } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import QRCodes from './QRCodes';
 
-
-const QRComp = (qrFile) => {
-    return(
-        <div>
-        <Box 
-        component="img"
-        sx={{
-            height: 233,
-            width: 350,
-            maxHeight: { xs: 233, md: 167 },
-            maxWidth: { xs: 350, md: 250 },
-        }}
-        src={qrFile}
-        />
-        <Button></Button>
-        <Button></Button>
-        </div>
-    )
-}
 
 const QRSearch =()=>{
 
-    const [name,setName] = useState('')
-    const [qrFile, setQrFile] = useState()
+    const [search,setSearch] = useState('')
+    const [drugs, setDrugs] = useState([])
 
     const handleSend = () => {
-        useEffect(() => {
-            axios.get('http://127.0.0.1:5000/messages', {})
-            .then(res => {
-                setQrFile(res.data.messages)
-                console.log(res.data)
-            })
-            .catch(ex => {
-                console.log(ex)
-            })
-        },[]);
+      axios.get('http://127.0.0.1:5000/drugs', {params: { search: search}})
+      .then(res => {
+        setDrugs(res.data.rows)
+        console.log(res.data)
+      })
+      .catch(ex => {
+        console.log(ex)
+      })
         }
 
     return(
         <Container maxWidth='md' sx={{p:2}} >
-      <Paper elevation={0} sx={{border:'2px solid', borderColor:'primary.main', borderRadius:'16px', backgroundColor:'primary.main', p:1}}  >
+      <Paper elevation={0} sx={{ borderRadius:'16px', p:1}}  >
       <Box display="flex" justifyContent="center" alignItems="center">
           <TextField
             className="custom-hidden-label"
-            color="textfield"
+            color="primary"
             sx={{ mb:1,mt:1, backgroundColor:'#F0F5F9', display:'flex', minWidth:'80%', borderRadius:'16px', maxHeight:'10%'}}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Název nebo kód přípravku"
             InputLabelProps={{
               shrink: false,
@@ -72,7 +53,7 @@ const QRSearch =()=>{
                     sx={{ width: '100%', borderRadius: '8px',  }}
                     onClick={handleSend}
                   >
-                    <SendRoundedIcon></SendRoundedIcon>
+                    <SearchIcon/>
                   </IconButton>
                 </InputAdornment>
               ),
@@ -83,9 +64,11 @@ const QRSearch =()=>{
       {/* </Grid> */}
       
       </Box>
+
+      <QRCodes drugs={drugs}/>
       </Paper>
 
-      {qrFile ? <QRComp/> : <div></div>}
+      
 
     </Container>
     )

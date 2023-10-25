@@ -9,10 +9,20 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import QRSearch from './QRSearch';
+import { useState } from 'react';
 
 
 function App() {
   const navItems = ['AI help', 'QR kódy'];
+  const [current,setCurrent] = useState("ai")
+  const [comp,setComp] = useState(<ChatWindow/>)
+
+  const handleAppSwitch = (next) => {
+    if(next == "ai" && current == "qr") {setComp(<ChatWindow/>); setCurrent("ai")}
+    else if(next=="qr" && current == "ai") {setComp(<QRSearch/>); setCurrent("qr")}
+      }
+
   return (
     <Container sx={{p:0, m:0, overflow: 'hidden',display: "flex",
     flexDirection: "column",}} maxWidth={false} disableGutters >
@@ -26,15 +36,18 @@ function App() {
         SPC AI WIZARD
       </Typography>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-        {navItems.map((item) => (
-          <Button key={item} sx={{ color: '#fff', fontSize:20 }}>
-            {item}
+          <Button sx={{ color: '#fff', fontSize:20 }} >
+            AI help
           </Button>
-        ))}
+          <Button sx={{ color: '#fff', fontSize:20 }} >
+            QR kódy
+          </Button>
+        
       </Box>
     </Toolbar>
   </AppBar>
       <ChatWindow/>
+      
       </Container>
   );
 }
