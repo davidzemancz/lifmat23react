@@ -19,7 +19,7 @@ function App() {
     <AppBar component="nav" position="sticky">
     <Toolbar>
       <Typography
-        variant="h6"
+        variant="name"
         component="div"
         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
       >

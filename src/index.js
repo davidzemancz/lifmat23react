@@ -33,7 +33,12 @@ const theme = createTheme({
     refs:{
       fontSize: 12,
       color: '#3ba6bc'
+    },
+    name:{
+      fontSize: 24,
+      color: '#fff'
     }
+
   },
   components: {
     MuiButton: {
