@@ -68,7 +68,7 @@ const MessageContent = ({message, setLoading, setUpdate}) => {
         {message.refs ?  <Divider sx={{fontSize:12}}>Zdroje</Divider> : <div></div>}
         {message.refs?.map((ref, id) => (
         <div key={id}>
-        <Link href={ref.url} sx={{fontSize:12}}>{ref.url}</Link>
+        <Link href={ref.url} target="_blank" sx={{fontSize:12}}>{ref.url}</Link>
         <Typography variant="refs" sx={{ wordBreak: "break-word" }}>, {ref.info}</Typography>
         </div>
       ))}
